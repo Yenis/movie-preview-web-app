@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-function App() {
+interface PopularMoviesList {
+  results: Array<any>;
+}
+
+const App: React.FC = () => {
+  const [popularMoviesList, setPopularMoviesList] =
+    useState<PopularMoviesList>();
+
+  useEffect(() => {
+    const getPopularMovies = async () => {
+      const { data } = await axios.get(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${1}`
+      );
+      console.log("RESULTS:", data.results);
+      console.log("PAGES:", data.total_pages);
+      setPopularMoviesList(data);
+    };
+    getPopularMovies();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {popularMoviesList ?
+        popularMoviesList.results.map((movie) => {
+          return <pre key={movie.backdrop_path}>{movie.original_title}</pre>;
+        }) : null}
     </div>
   );
-}
+};
 
 export default App;

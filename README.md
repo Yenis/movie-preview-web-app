@@ -19,11 +19,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### API
 
-The following API is used to fetch data:
+The following API is used to fetch data:\
 https://developers.themoviedb.org/3/getting-started/introduction 
 
-You will need to register to obtain an API key in order to use this app.
-Place it within a .env file in the root directory of this project.
+You will need to register to obtain an API key in order to use this app.\
+Place it within a .env file in the root directory of this project.\
+TMDB_API_KEY=>>>Your API key<<<
 
 ## Learn More
 
