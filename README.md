@@ -24,7 +24,7 @@ https://developers.themoviedb.org/3/getting-started/introduction
 
 You will need to register to obtain an API key in order to use this app.\
 Place it within a .env file in the root directory of this project.\
-TMDB_API_KEY=>>>Your API key<<<
+REACT_APP_API_KEY="Your API key" - without quotes
 
 ## Learn More
 

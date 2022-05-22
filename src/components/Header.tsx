@@ -3,44 +3,51 @@ import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import AdbIcon from "@mui/icons-material/Adb";
+import SmartDisplayIcon from "@mui/icons-material/SmartDisplay";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
+import StarIcon from "@mui/icons-material/Star";
+import UndoIcon from "@mui/icons-material/Undo";
 
 const HeaderTopBar: React.FC = () => {
   return (
-    <AppBar position="static">
+    <AppBar position="sticky" color="secondary">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
+          <SmartDisplayIcon
+            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+          />
+          <Button onClick={() => {window.scroll(0, 0)}}
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
               fontWeight: 600,
-              letterSpacing: ".1rem",
               color: "inherit",
-              textDecoration: "none",
+              scrollBehavior: "auto"
             }}
           >
             MOVIE PREVIEW WEB APP
-          </Typography>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-
-          <Box sx={{ flexGrow: 1, paddingLeft: { xs: 0, md: 5 }, display: "flex" }}>
+          </Button>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: "flex",
+              justifyContent: "space-around",
+            }}
+          >
             <Button sx={{ my: 2, color: "white", display: "block" }}>
-              POPULAR
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <StarIcon sx={{ paddingLeft: 1, paddingRight: 1 }} />
+                POPULAR
+              </Box>
             </Button>
             <Button sx={{ my: 2, color: "white", display: "block" }}>
-              RECENT
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <UndoIcon sx={{ paddingLeft: 1, paddingRight: 1 }} />
+                RECENT
+              </Box>
             </Button>
           </Box>
 
