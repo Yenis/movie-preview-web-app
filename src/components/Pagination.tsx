@@ -1,24 +1,37 @@
-import * as React from 'react';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import { useCurrentPage } from '../helpers/customHooks/usePageHook';
- 
+import * as React from "react";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import { useCurrentPage } from "../helpers/customHooks/usePageHook";
+import { Box } from "@mui/material";
+
 const PaginationBar: React.FC = () => {
+  const { currentPage, setCurrentPage } = useCurrentPage();
 
-    const { currentPage, setCurrentPage } = useCurrentPage();
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
-    const handlePageChange = () => {
-        setCurrentPage(2)
-        window.scroll(0, 0);
-    }
-
-    return (
+  return (
+    <Box sx={{ display: "flex", justifyContent: "space-around", margin: 2 }}>
         <Stack spacing={2}>
-          <Pagination count={10} shape="rounded" />
-          <Pagination count={10} variant="outlined" shape="rounded" />
+          <Pagination
+            onChange={(e: any) => {
+              handlePageChange(e.target.textContent);
+            }}
+            hideNextButton
+            hidePrevButton
+            color="primary"
+            page={currentPage}
+            size="large"
+            count={10}
+            defaultPage={1}
+            boundaryCount={2}
+            variant="outlined"  
+            shape="rounded"
+          />
         </Stack>
-      );
-}
- 
-export default PaginationBar;
+    </Box>
+  );
+};
 
+export default PaginationBar;

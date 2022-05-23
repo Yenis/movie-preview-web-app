@@ -13,7 +13,7 @@ interface PopularMoviesList {
 
 interface TrendingProps {}
 
-const Trending: React.FC<TrendingProps> = () => {
+const TrendingPage: React.FC<TrendingProps> = () => {
   const [popularMoviesList, setPopularMoviesList] =
     useState<PopularMoviesList>();
 
@@ -26,12 +26,10 @@ const Trending: React.FC<TrendingProps> = () => {
           process.env.REACT_APP_API_KEY
         }&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${currentPage}`
       );
-      console.log("RESULTS:", data.results);
-      console.log("PAGES:", data.total_pages);
       setPopularMoviesList(data);
     };
     getPopularMovies();
-  }, []);
+  }, [currentPage]);
 
   return (
     <Container sx={{display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
@@ -40,6 +38,7 @@ const Trending: React.FC<TrendingProps> = () => {
             return (
               <MovieCard
                 key={movie.id}
+                id={movie.id}
                 title={movie.title}
                 poster_path={movie.poster_path}
                 release_date={movie.release_date}
@@ -53,4 +52,4 @@ const Trending: React.FC<TrendingProps> = () => {
   );
 };
 
-export default Trending;
+export default TrendingPage;

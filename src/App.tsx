@@ -1,10 +1,10 @@
-import { Container, Pagination } from "@mui/material";
+import { Container } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import React from "react";
 import HeaderTopBar from "./components/Header";
-import Trending from "./pages/Trending";
-import Recent from "./pages/Recent";
+import TrendingPage from "./pages/Trending";
 import { useCurrentPage } from "./helpers/customHooks/usePageHook";
+import SearchPage from "./components/Search";
 
 const App: React.FC = () => {
 
@@ -15,12 +15,11 @@ const App: React.FC = () => {
       <HeaderTopBar />
       <Container>
         <Routes>
-          <Route path="/" element={<Trending />}></Route>
-          <Route path="/trending" element={<Trending />}></Route>
-          <Route path="/recent" element={<Recent />}></Route>
+          <Route path="/" element={<TrendingPage />}></Route>
+          <Route path="/trending" element={<TrendingPage />}></Route>
+          <Route path="/search" element={<SearchPage />}></Route>
         </Routes>
       </Container>
-      <Pagination />
     </PageContextProvider>
   );
 };

@@ -1,7 +1,8 @@
 import { Box } from "@mui/material";
+import TransitionsModal from "./SingleMovieDetailsPreview";
 
 export interface MovieCardProps {
-  id?: number;
+  id: number;
   title: string;
   poster_path: string;
   release_date: string;
@@ -12,66 +13,109 @@ export interface MovieCardProps {
 
 const MovieCard: React.FC<MovieCardProps> = (props) => {
   return (
-    <Box
-      sx={{
-        width: { xs: 180, md: 240 },
-        height: { xs: 300, md: 385 },
-        display: "flex",
-        flexDirection: "column",
-        borderRadius: 3,
-        backgroundColor: "darkslategrey",
-        color: "whitesmoke",
-        margin: 1,
-        "&:hover": {
-          backgroundColor: "#9c27b0",
-        },
-      }}
-    >
+    <TransitionsModal id={props.id}>
       <Box
-        component="img"
         sx={{
-          width: { xs: 164, md: 224 },
-          height: { xs: 225, md: 300 },
-          margin: 1,
+          width: { xs: 180, md: 240 },
+          height: { xs: 300, md: 385 },
+          display: "flex",
+          flexDirection: "column",
           borderRadius: 3,
+          backgroundColor: "darkslategrey",
+          color: "whitesmoke",
+          margin: 1,
+          "&:hover": {
+            backgroundColor: "#9c27b0",
+          },
         }}
-        src={`https://image.tmdb.org/t/p/w300${props.poster_path}`}
-        alt="N/A"
-      />
-      <Box>
+      >
         <Box
+          component="img"
           sx={{
-            display: "flex",
-            justifyContent: "space-around",
-            fontWeight: 600,
-            fontSize: "large",
+            width: { xs: 164, md: 224 },
+            height: { xs: 225, md: 300 },
+            margin: 1,
+            borderRadius: 3,
           }}
-        >
-          {props.title}
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-around",
-            padding: 1,
-          }}
-        >
-          <Box sx={{ fontWeight: 500 }}>{props.release_date}</Box>
-          {props.vote_average > 7 ? (
-            <Box sx={{ fontWeight: 600, fontSize: "large", color: "gold" }}>
-              {props.vote_average}
+          src={`https://image.tmdb.org/t/p/w300${props.poster_path}`}
+          alt="N/A"
+        />
+        <Box>
+          {props.title.length > 20 ? (
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-around",
+                fontWeight: 600,
+                fontSize: "small",
+              }}
+            >
+              {props.title}
             </Box>
           ) : (
-            <Box sx={{ fontWeight: 600, color: "silver" }}>
-              {props.vote_average}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-around",
+                fontWeight: 600,
+                fontSize: "large",
+              }}
+            >
+              {props.title}
             </Box>
           )}
-          <Box sx={{ fontWeight: 800, color: "silver" }}>
-            {props.original_language.toUpperCase()}
+          <Box>
+            <Box
+              sx={{
+                fontWeight: 500,
+                position: "absolute",
+                top: "90%",
+                left: "10%",
+              }}
+            >
+              {props.release_date}
+            </Box>
+            {props.vote_average > 7 ? (
+              <Box
+                sx={{
+                  fontWeight: 600,
+                  fontSize: "large",
+                  color: "gold",
+                  position: "absolute",
+                  top: "90%",
+                  left: "50%",
+                }}
+              >
+                {props.vote_average}
+              </Box>
+            ) : (
+              <Box
+                sx={{
+                  fontWeight: 600,
+                  color: "silver",
+                  position: "absolute",
+                  top: "90%",
+                  left: "50%",
+                }}
+              >
+                {props.vote_average}
+              </Box>
+            )}
+            <Box
+              sx={{
+                fontWeight: 800,
+                color: "silver",
+                position: "absolute",
+                top: "90%",
+                left: "80%",
+              }}
+            >
+              {props.original_language.toUpperCase()}
+            </Box>
           </Box>
         </Box>
       </Box>
-    </Box>
+    </TransitionsModal>
   );
 };
 
