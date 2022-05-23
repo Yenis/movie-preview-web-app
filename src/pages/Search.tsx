@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import MovieCard, { MovieCardProps } from "./MovieCard";
+import MovieCard, { MovieCardProps } from "../components/MovieCard";
 import { TextField, Button, Container, Box } from "@mui/material";
 import { useCurrentPage } from "../helpers/customHooks/usePageHook";
 import SearchIcon from "@mui/icons-material/Search";

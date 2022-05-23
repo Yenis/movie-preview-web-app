@@ -1,6 +1,5 @@
 import { createContext, useContext, useMemo, useState } from "react";
 
-
 const CurrentPageContext = createContext({
   currentPage: 1,
   setCurrentPage: (page: number) => {},

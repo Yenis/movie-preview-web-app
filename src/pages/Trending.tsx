@@ -1,6 +1,6 @@
-import { Container } from "@mui/material";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Container } from "@mui/material";
 import MovieCard, {
   MovieCardProps as MovieData,
 } from "../components/MovieCard";
@@ -11,9 +11,7 @@ interface PopularMoviesList {
   total_pages: number;
 }
 
-interface TrendingProps {}
-
-const TrendingPage: React.FC<TrendingProps> = () => {
+const TrendingPage: React.FC = () => {
   const [popularMoviesList, setPopularMoviesList] =
     useState<PopularMoviesList>();
 
@@ -24,7 +22,7 @@ const TrendingPage: React.FC<TrendingProps> = () => {
       const { data } = await axios.get(
         `https://api.themoviedb.org/3/discover/movie?api_key=${
           process.env.REACT_APP_API_KEY
-        }&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${currentPage}`
+        }&sort_by=popularity.desc&include_adult=false&include_video=false&page=${currentPage}`
       );
       setPopularMoviesList(data);
     };

@@ -4,7 +4,7 @@ import React from "react";
 import HeaderTopBar from "./components/Header";
 import TrendingPage from "./pages/Trending";
 import { useCurrentPage } from "./helpers/customHooks/usePageHook";
-import SearchPage from "./components/Search";
+import SearchPage from "./pages/Search";
 
 const App: React.FC = () => {
 

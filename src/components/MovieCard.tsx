@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import TransitionsModal from "./SingleMovieDetailsPreview";
+import { TransitionsModal } from "../helpers/TransitionsModal";
 
 export interface MovieCardProps {
   id: number;

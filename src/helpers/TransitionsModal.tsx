@@ -8,29 +8,20 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 interface FullMovieData {
-  adult: boolean;
   backdrop_path: string;
-  belongs_to_collection: {};
   budget: number;
-  genres: any[];
   homepage: string;
   id: number;
-  imdb_id: string;
   original_language: string;
   original_title: string;
   overview: string;
   popularity: number;
   poster_path: string;
-  production_companies: any[];
-  production_countries: any[];
   release_date: string;
   revenue: number;
   runtime: number;
-  spoken_languages: any[];
-  status: string;
   tagline: string;
   title: string;
-  video: boolean;
   vote_average: number;
   vote_count: number;
 }
@@ -49,8 +40,9 @@ const style = {
   p: 4,
 };
 
-export default function TransitionsModal({ children, id }: any) {
+export const TransitionsModal = ({ children, id }: any) => {
   const [open, setOpen] = React.useState(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -70,7 +62,7 @@ export default function TransitionsModal({ children, id }: any) {
   }, []);
 
   return (
-    <div>
+    <Box>
       <Button onClick={handleOpen}>{children}</Button>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -155,6 +147,6 @@ export default function TransitionsModal({ children, id }: any) {
           </Box>
         </Fade>
       </Modal>
-    </div>
+    </Box>
   );
 }
