@@ -38,6 +38,12 @@ OR with this command from the terminal:
 
 `docker run -p 3000:3000 yenis92/movie-preview-web-app`
 
+![IMAGE 1](https://user-images.githubusercontent.com/22280179/169829380-a90723db-92f1-4bf7-a82b-4d446aca5cf9.png)
+
+![IMAGE 2](https://user-images.githubusercontent.com/22280179/169829392-57200a4d-60ae-4585-befa-9afe54a26184.png)
+
+![IMAGE 3](https://user-images.githubusercontent.com/22280179/169829400-d2e3803b-f80d-4e72-ba4f-734a45e4370f.png)
+
 ### API
 
 The following API is used to fetch data:\
