@@ -4,10 +4,11 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import PaginationBar from "./Pagination";
 import StarIcon from "@mui/icons-material/Star";
 import { useNavigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
+import UndoIcon from '@mui/icons-material/Undo';
+import RecommendIcon from '@mui/icons-material/Recommend';
 import { Tooltip } from "@mui/material";
 
 const HeaderTopBar: React.FC = () => {
@@ -42,6 +43,7 @@ const HeaderTopBar: React.FC = () => {
               justifyContent: "space-around",
             }}
           >
+            <Tooltip title="Navigate to Trending Page">
             <Button
               onClick={() => {
                 navigateTo("/trending");
@@ -53,7 +55,34 @@ const HeaderTopBar: React.FC = () => {
                 POPULAR
               </Box>
             </Button>
-            <PaginationBar />
+            </Tooltip>
+            <Tooltip title="Navigate to Recent Page">
+            <Button
+              onClick={() => {
+                navigateTo("/recent");
+              }}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <UndoIcon sx={{ paddingLeft: 1, paddingRight: 1 }} />
+                RECENT
+              </Box>
+            </Button>
+            </Tooltip>
+            <Tooltip title="View Top Rated Movies">
+            <Button
+              onClick={() => {
+                navigateTo("/toprated");
+              }}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <RecommendIcon sx={{ paddingLeft: 1, paddingRight: 1 }} />
+                TOP RATED
+              </Box>
+            </Button>
+            </Tooltip>
+            <Tooltip title="Search Movies">
             <Button
               onClick={() => {
                 navigateTo("/search");
@@ -65,6 +94,7 @@ const HeaderTopBar: React.FC = () => {
                 SEARCH
               </Box>
             </Button>
+            </Tooltip>
           </Box>
         </Toolbar>
       </Container>

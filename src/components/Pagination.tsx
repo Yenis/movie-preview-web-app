@@ -1,14 +1,17 @@
 import * as React from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import { useCurrentPage } from "../helpers/customHooks/usePageHook";
 import { Box } from "@mui/material";
 
-const PaginationBar: React.FC = () => {
-  const { currentPage, setCurrentPage } = useCurrentPage();
+interface PaginationProps {
+  currentPage: number
+  setCurrentPage: (page: number) => void
+}
+
+const PaginationBar: React.FC<PaginationProps> = (props) => {
 
   const handlePageChange = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
+    props.setCurrentPage(pageNumber);
   };
 
   return (
@@ -21,7 +24,6 @@ const PaginationBar: React.FC = () => {
             hideNextButton
             hidePrevButton
             color="primary"
-            page={currentPage}
             size="large"
             count={10}
             defaultPage={1}

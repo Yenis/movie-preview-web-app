@@ -4,18 +4,18 @@ import { Container } from "@mui/material";
 import MovieCard, {
   MovieCardProps as MovieData,
 } from "../components/MovieCard";
-import { useCurrentPage } from "../helpers/customHooks/usePageHook";
+import PaginationBar from "../components/Pagination";
 
-interface PopularMoviesList {
+export interface MoviesList {
   results: Array<MovieData>;
   total_pages: number;
 }
 
 const TrendingPage: React.FC = () => {
-  const [popularMoviesList, setPopularMoviesList] =
-    useState<PopularMoviesList>();
+  const [moviesList, setMoviesList] =
+    useState<MoviesList>();
 
-    const { currentPage } = useCurrentPage();
+  const [currentPage, setCurrentPage] = useState<number>(1);  
 
   useEffect(() => {
     const getPopularMovies = async () => {
@@ -24,15 +24,16 @@ const TrendingPage: React.FC = () => {
           process.env.REACT_APP_API_KEY
         }&sort_by=popularity.desc&include_adult=false&include_video=false&page=${currentPage}`
       );
-      setPopularMoviesList(data);
+      setMoviesList(data);
     };
     getPopularMovies();
   }, [currentPage]);
 
   return (
-    <Container sx={{display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
-      {popularMoviesList
-        ? popularMoviesList.results.map((movie) => {
+    <>
+      <Container sx={{display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
+      {moviesList
+        ? moviesList.results.map((movie) => {
             return (
               <MovieCard
                 key={movie.id}
@@ -47,6 +48,8 @@ const TrendingPage: React.FC = () => {
           })
         : null}
     </Container>
+    <PaginationBar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+    </>
   );
 };
 
