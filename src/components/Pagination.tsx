@@ -25,7 +25,7 @@ const PaginationBar: React.FC<PaginationProps> = (props) => {
             hidePrevButton
             color="primary"
             size="large"
-            count={10}
+            count={100}
             defaultPage={1}
             boundaryCount={2}
             variant="outlined"  

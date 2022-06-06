@@ -48,7 +48,6 @@ const SearchPage: React.FC = () => {
           <SearchIcon />
         </Button>
       </Box>
-
       <Container
         sx={{
           display: "flex",
