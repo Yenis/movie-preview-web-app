@@ -4,24 +4,28 @@ import { Container } from "@mui/material";
 import MovieCard from "../components/MovieCard";
 import PaginationBar from "../components/Pagination";
 import { MoviesList } from "./Trending";
-import Genres from "../components/Genres";
+import Genres, { GenreProps } from "../components/Genres";
 
 const TopRatedPage: React.FC = () => {
   const [moviesList, setMoviesList] = useState<MoviesList>();
 
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [genre, setGenre] = useState();
+  const [genre, setGenre] = useState<GenreProps>();
 
   useEffect(() => {
     const getTopRatedMovies = async () => {
       if (!genre) {
         const { data } = await axios.get(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&sort_by=vote_average.desc&include_adult=false&include_video=false&page=${currentPage}`
+          `https://api.themoviedb.org/3/discover/movie?api_key=${
+              process.env.REACT_APP_API_KEY
+            }&sort_by=vote_average.desc&include_adult=false&include_video=false&page=${currentPage}`
         );
         setMoviesList(data);
       } else {
         const { data } = await axios.get(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&sort_by=vote_average.desc&include_adult=false&include_video=false&page=${currentPage}&with_genres=${genre}`
+          `https://api.themoviedb.org/3/discover/movie?api_key=${
+              process.env.REACT_APP_API_KEY
+            }&sort_by=vote_average.desc&include_adult=false&include_video=false&page=${currentPage}&with_genres=${genre.id}`
         );
         setMoviesList(data);
       }

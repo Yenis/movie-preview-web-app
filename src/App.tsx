@@ -8,7 +8,6 @@ import RecentPage from "./pages/Recent";
 import TopRatedPage from "./pages/TopRated";
 
 const App: React.FC = () => {
-
   return (
     <>
       <HeaderTopBar />

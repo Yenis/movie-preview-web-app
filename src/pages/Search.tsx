@@ -14,7 +14,9 @@ const SearchPage: React.FC = () => {
   const fetchSearch = async () => {
     try {
       const { data } = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchText}&page=${currentPage}&include_adult=false`
+        `https://api.themoviedb.org/3/search/movie?api_key=${
+          process.env.REACT_APP_API_KEY
+        }&query=${searchText}&page=${currentPage}&include_adult=false`
       );
       setSearchList(data.results);
     } catch (error) {

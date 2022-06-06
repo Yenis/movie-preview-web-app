@@ -2,13 +2,18 @@ import { Chip, Container } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+export interface GenreProps {
+  id: number;
+  name: string;
+}
+
 interface GenrePageProps {
-  setGenre: (genre: any) => void;
+  setGenre: (genre: GenreProps) => void;
   setCurrentPage: (page: number) => void;
 }
 
 const Genres: React.FC<GenrePageProps> = (props) => {
-  const [genres, setGenres] = useState<any>([]);
+  const [genres, setGenres] = useState<GenreProps[]>([]);
 
   const fetchGenres = async () => {
     const { data } = await axios.get(
@@ -31,7 +36,7 @@ const Genres: React.FC<GenrePageProps> = (props) => {
         justifyContent: "space-around",
       }}
     >
-      {genres.map((genre: any) => (
+      {genres.map((genre: GenreProps) => (
         <Chip
           style={{ margin: 2, color: "white" }}
           label={genre.name}
@@ -39,7 +44,7 @@ const Genres: React.FC<GenrePageProps> = (props) => {
           variant="outlined"
           clickable
           onClick={() => {
-            props.setGenre(genre.id);
+            props.setGenre(genre);
             props.setCurrentPage(1);
           }}
         />

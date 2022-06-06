@@ -149,4 +149,4 @@ export const TransitionsModal = ({ children, id }: any) => {
       </Modal>
     </Box>
   );
-}
+};
